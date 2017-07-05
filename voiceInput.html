@@ -1,0 +1,22 @@
+<html>
+<head>
+	 <meta charset="UTF-8"> 
+	<title>VOP | Voice Input</title>
+	<!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.48.0.min.js"></script> -->
+	<script type="text/javascript" src="js/comm.js"></script>
+	<script type="text/javascript" src="js/control.js"></script>
+	<script type="text/javascript" src="js/worker.js"></script>
+	<script type="text/javascript" src="js/record.js"></script>
+</head>
+
+<body>
+	<button onclick="startAudio()">Start Audio Capture</button>
+	<button onclick="stopAudio()">Stop Audio Capture</button>
+	<div>
+		<audio id="audioInput" controls></audio>
+	</div>
+	<!-- <video controls></video> -->
+	<div id="errorMsg"></div>
+	<div id="responseData"></div>
+</body>
+</html>
