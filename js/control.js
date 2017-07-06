@@ -5,8 +5,23 @@ window.onload = function(){
   // alert("hi");
   audioInput = document.querySelector('#audioInput');
 };
+
+function addAudioTracks(){
+  if(window.stream && window.audioTracks){
+    for(var i=0;i<window.audioTracks.length;i++){
+      window.stream.addTrack(window.audioTracks[i]);
+    }
+  }
+}
+
 function startAudio(){
   // Put variables in global scope to make them available to the browser console. 
+  if(recorder!=undefined && window.stream!=undefined && window.audioTracks!=undefined){
+    addAudioTracks();
+    recorder.record();
+    return;
+  }
+
 var gUserMedia = navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 var constraints = window.constraints = {
   audio: true
@@ -27,6 +42,7 @@ navigator.mediaDevices.getUserMedia(constraints)
     console.log('Stream ended');
   };
   window.stream = stream; // make variable available to browser console
+  window.audioTracks = audioTracks;
   audioInput.srcObject = stream;
   audioInput.play();
 })
@@ -45,9 +61,17 @@ navigator.mediaDevices.getUserMedia(constraints)
 function errorMsg(msg, error) {
   errorElement.innerHTML += '<p>' + msg + '</p>';
   if (typeof error !== 'undefined') {
-    console.error(error);
+      console.error(error);
+    }
   }
 }
+
+function removeAudioTracks(){
+  if(window.stream && window.audioTracks){    
+    for(var i=0;i <window.audioTracks.length;i++){
+      window.stream.removeTrack(window.audioTracks[i]);
+    }
+  }
 }
 
 function stopAudio(){
@@ -55,7 +79,8 @@ function stopAudio(){
 		audioInput.pause();
 	}
 	if(window.stream){		
-		window.stream.getAudioTracks()[0].stop();
+		// window.stream.getAudioTracks()[0].stop();
+    removeAudioTracks();
 	}
 	recorder && recorder.stop(audioInput);
 }

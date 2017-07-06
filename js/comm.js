@@ -44,6 +44,7 @@ function sendGoogleSpeechRequest(data, successCallBack, errorCallBack, sampleRat
 }
 
 function sendText(){
+	// var textUrl = "http://vop-interface-server.herokuapp.com/text";
 	var textUrl = "http://localhost/text";
 	var inputElem = document.querySelector("#textInput");
 	var requestPayload = {"textInput":inputElem.value};
