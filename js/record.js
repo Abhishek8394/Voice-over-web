@@ -37,7 +37,7 @@ Recorder.prototype.prepareAudio = function(audio){
 	var sampleRate = 16000;
 	console.log("current sample rate: " +  this.audioContext.sampleRate);
 	// console.log(mBuff);
-	var dsBuff = worker.downSample(mBuff, this.audioContext.sampleRate);
+	var dsBuff = worker.downSample(mBuff, this.audioContext.sampleRate, sampleRate);
 	var encodedWav = worker.encodeWAV(dsBuff, sampleRate);
 	var audioBlob = new Blob([encodedWav], {type:'application/octet-stream'});
 	blobToBase64(audioBlob, function(base64data){

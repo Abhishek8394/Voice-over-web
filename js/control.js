@@ -22,7 +22,7 @@ navigator.mediaDevices.getUserMedia(constraints)
   recorder.record();
   var audioTracks = stream.getAudioTracks();
   console.log('Got stream with constraints:', constraints);
-  console.log('Using video device: ' + audioTracks[0].label);
+  console.log('Using audio device: ' + audioTracks);
   stream.onremovetrack = function() {
     console.log('Stream ended');
   };
