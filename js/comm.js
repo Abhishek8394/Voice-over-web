@@ -42,3 +42,16 @@ function sendGoogleSpeechRequest(data, successCallBack, errorCallBack, sampleRat
     };
     sendData(speechUrl, requestPayload, successCallBack, errorCallBack);
 }
+
+function sendText(){
+	var textUrl = "http://localhost/text";
+	var inputElem = document.querySelector("#textInput");
+	var requestPayload = {"textInput":inputElem.value};
+	sendData(textUrl, requestPayload, function(d){
+		console.log("success sending to textEndpoint");
+		console.log(d);
+	}, function(e){
+		console.log("error sending to textEndpoint");
+		console.log(e);
+	});
+}
