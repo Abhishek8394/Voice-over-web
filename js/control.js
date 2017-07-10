@@ -43,8 +43,9 @@ navigator.mediaDevices.getUserMedia(constraints)
   };
   window.stream = stream; // make variable available to browser console
   window.audioTracks = audioTracks;
-  audioInput.srcObject = stream;
-  audioInput.play();
+  // echoing into speaker. For debugging
+  // audioInput.srcObject = stream;
+  // audioInput.play();
 })
 .catch(function(error) {
   if (error.name === 'ConstraintNotSatisfiedError') {
