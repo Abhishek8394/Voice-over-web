@@ -51,8 +51,33 @@ function sendText(){
 	sendData(textUrl, requestPayload, function(d){
 		console.log("success sending to textEndpoint");
 		console.log(d);
+		setStatusBarText("Request sent successfully");
 	}, function(e){
 		console.log("error sending to textEndpoint");
 		console.log(e);
+		setStatusBarText("Some error occurred while trying to send request. Check connection and console.");
 	});
+
+	setStatusBarText("Sending request...");	
 }
+
+function setStatusBarText(txt){
+	$('#request-status-bar').text(txt);
+}
+
+function keydownhandler(e){
+	// pressed enter.
+	if(e.keyCode == 13){
+		sendText();
+	}
+	// console.log(e, "change handler");
+}
+
+function initialSetup(){
+	var inputElem = document.querySelector("#textInput");
+	inputElem.onkeydown = keydownhandler;
+}
+
+$(function(){
+	initialSetup();
+});

@@ -23,3 +23,11 @@
 	border: 1px solid #61DAFB;
 	box-shadow: 1px 1px 15px 1px #61DAFB;
 }
+
+.status-bar{
+	background-color: #eee;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	margin-top: 2%;
+	padding: 0.5% 0.3%;
+}
